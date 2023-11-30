@@ -79,16 +79,25 @@ namespace BLL
         public bool insertCTPhieuNhap(CTPhieuNhap pn)
         {
             try
-            {
-                pn.MaCT = ""+(db.PhieuNhaps.Count() + 1);
+            {              
                 db.CTPhieuNhaps.InsertOnSubmit(pn);
                 db.SubmitChanges();
+                SanPham sp = db.SanPhams.Where(r=>r.MaSP == pn.MaSP).FirstOrDefault();
+                if (sp != null)
+                {
+                    sp.SoLuongTon = sp.SoLuongTon+pn.SoLuong;
+                    db.SubmitChanges();
+                }              
                 return true;
             }
             catch (Exception)
             {
                 return false;
             }
+        }
+        public int CountCTPN()
+        {
+            return db.CTPhieuNhaps.Count();
         }
     }
 }

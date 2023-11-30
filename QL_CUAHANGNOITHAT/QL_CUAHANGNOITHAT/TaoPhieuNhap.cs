@@ -14,7 +14,7 @@ namespace QL_CUAHANGNOITHAT
     public partial class TaoPhieuNhap : Form
     {
         BLL_PhieuNhap pn = new BLL_PhieuNhap();
-        BLL_SanPham sp = new BLL_SanPham();  
+        BLL_SanPham sp = new BLL_SanPham();
         public NhanVien UserAccout { get; set; }
         public TaoPhieuNhap(NhanVien UserAccout)
         {
@@ -25,12 +25,12 @@ namespace QL_CUAHANGNOITHAT
 
         private void TaoPhieuNhap_Load(object sender, EventArgs e)
         {
-            
+
             dtSanPham.DataSource = sp.GetSanPham(0);
             dtChiTietPhieuNhap.Columns.Add("Column1", "Tên sản phẩm");
             dtChiTietPhieuNhap.Columns.Add("Column2", "Số lượng nhập");
             Random random = new Random();
-            string IDSP = "PN"+random.Next(10000, 99999);
+            string IDSP = "PN" + random.Next(10000, 99999);
             while (pn.checkID(IDSP) == false)
             {
                 IDSP = "PN" + random.Next(10000, 99999);
@@ -43,7 +43,7 @@ namespace QL_CUAHANGNOITHAT
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dtSanPham_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -90,7 +90,7 @@ namespace QL_CUAHANGNOITHAT
         }
         private void btnNhapHang_Click(object sender, EventArgs e)
         {
-            if(dtChiTietPhieuNhap.Rows.Count > 0)
+            if (dtChiTietPhieuNhap.Rows.Count > 0)
             {
                 dtChiTietPhieuNhap.Rows.Clear();
                 SanPham item = sp.FindSanPham(txtMaSP.Text);
@@ -100,9 +100,9 @@ namespace QL_CUAHANGNOITHAT
                     push(item.MaSP, item.TenSP, soluongNhap);
                 }
             }
-            foreach(var i in list)
+            foreach (var i in list)
             {
-                dtChiTietPhieuNhap.Rows.Add(i.TenSP,i.SoLuong);
+                dtChiTietPhieuNhap.Rows.Add(i.TenSP, i.SoLuong);
             }
         }
 
@@ -118,17 +118,15 @@ namespace QL_CUAHANGNOITHAT
                 insertPhieuNhap.MaNV = UserAccout.MaNV;
                 insertPhieuNhap.TongTien = 1000000;
                 pn.insertPhieuNhap(insertPhieuNhap);
-
-                foreach(var i in list)
+                foreach (var i in list)
                 {
                     CTPhieuNhap ctpn = new CTPhieuNhap();
+                    ctpn.MaCT = ""+(pn.CountCTPN() + 1);
                     ctpn.MaPN = txtMaPN.Text;
                     ctpn.MaSP = i.MaSP;
                     ctpn.SoLuong = i.SoLuong;
-
                     pn.insertCTPhieuNhap(ctpn);
                 }
-
             }
             else
             {
