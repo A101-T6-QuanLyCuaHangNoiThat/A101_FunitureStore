@@ -24,6 +24,7 @@ namespace QL_CUAHANGNOITHAT
             {
                 MessageBox.Show("Login thành công");
                 MainForm fr = new MainForm();
+                fr.UserAccount = user.GetNhanVien();
                 fr.FormClosed += new FormClosedEventHandler(fr_formclosed);
                 fr.Show();
                 this.Hide();

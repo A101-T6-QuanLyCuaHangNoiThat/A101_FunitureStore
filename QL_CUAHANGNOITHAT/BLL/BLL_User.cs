@@ -24,5 +24,9 @@ namespace BLL
             }
             return false;
         }
+        public NhanVien GetNhanVien()
+        {
+            return nv;
+        }
     }
 }

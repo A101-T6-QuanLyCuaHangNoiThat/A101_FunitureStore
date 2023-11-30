@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLLHoaDon.cs" />
     <Compile Include="BLL_KhachHang.cs" />
     <Compile Include="BLL_NhanVien.cs" />
+    <Compile Include="BLL_PhieuNhap.cs" />
     <Compile Include="BLL_SanPham.cs" />
     <Compile Include="BLL_User.cs" />
     <Compile Include="DB_CuaHangNoiThat.designer.cs">

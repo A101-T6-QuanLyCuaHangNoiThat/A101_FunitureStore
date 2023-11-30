@@ -12,6 +12,7 @@ namespace QL_CUAHANGNOITHAT
 {
     public partial class MainForm : Form
     {
+        public NhanVien UserAccount { get; set; }
         int MainPN_ID = 1;
         IDPanel IDMainPN = new IDPanel();    
         static MainForm Main;
@@ -60,7 +61,7 @@ namespace QL_CUAHANGNOITHAT
                 case 3:
                     {
                         MainPN.Controls.Clear();
-                        Control HoaDon_3 = new GUIHoaDon();
+                        Control HoaDon_3 = new GUIHoaDon(UserAccount);
                         MainPN.Controls.Add(HoaDon_3);
                     } break;
                 case 4:

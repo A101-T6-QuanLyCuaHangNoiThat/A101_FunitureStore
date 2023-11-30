@@ -64,6 +64,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChiTietHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChiTietHoaDon.Designer.cs">
+      <DependentUpon>ChiTietHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUIDoanhThu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -88,6 +94,12 @@
     <Compile Include="GUIKhachHang.Designer.cs">
       <DependentUpon>GUIKhachHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="PNHoaDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PNHoaDon.Designer.cs">
+      <DependentUpon>PNHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +111,12 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PNPhieuNhap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PNPhieuNhap.Designer.cs">
+      <DependentUpon>PNPhieuNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,6 +132,12 @@
     <Compile Include="GUISanPham.Designer.cs">
       <DependentUpon>GUISanPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaoPhieuNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaoPhieuNhap.Designer.cs">
+      <DependentUpon>TaoPhieuNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThemNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +150,9 @@
     <Compile Include="ThemSanPham.Designer.cs">
       <DependentUpon>ThemSanPham.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ChiTietHoaDon.resx">
+      <DependentUpon>ChiTietHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUIDoanhThu.resx">
       <DependentUpon>GUIDoanhThu.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,11 +165,17 @@
     <EmbeddedResource Include="GUIKhachHang.resx">
       <DependentUpon>GUIKhachHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PNHoaDon.resx">
+      <DependentUpon>PNHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PNPhieuNhap.resx">
+      <DependentUpon>PNPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -158,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUISanPham.resx">
       <DependentUpon>GUISanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaoPhieuNhap.resx">
+      <DependentUpon>TaoPhieuNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ThemNhanVien.resx">
       <DependentUpon>ThemNhanVien.cs</DependentUpon>
