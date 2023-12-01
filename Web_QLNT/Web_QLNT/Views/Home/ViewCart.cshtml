@@ -1,0 +1,47 @@
+﻿@using Web_QLNT.Models;
+@{
+    ViewBag.Title = "ViewCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    GioHang cart = Session["Cart"] as GioHang;
+    if (cart == null)
+    {
+        cart = new GioHang();
+    }
+}
+<h2>GIỎ HÀNG</h2>
+@if (cart.Items.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Tổng cộng</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CartItem item in cart.Items)
+            {
+                <tr>
+                    <td>@item.SanPham.TenSP</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.SanPham.DonGia.ToString("C")</td>
+                    <td>@(item.SanPham.DonGia * item.Quantity)</td>
+                    <td><a class="btn btn-primary" href="@Url.Action("RemoveFromCart", "Home", new { productId = item.SanPham.MaSP })">Xóa</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p>Tổng số lượng: @cart.GetTotalQuantity()</p>
+    <p>Tổng giá tiền: @cart.GetTotalPrice()</p>
+
+    <a class="btn btn-primary" href="#">THANH TOÁN</a>
+    <a href="@Url.Action("ClearCart", "Home")" class="btn btn-danger">Xóa tất cả sản phẩm</a>
+}
+else
+{
+    <p>Giỏ hàng trống.</p>
+}

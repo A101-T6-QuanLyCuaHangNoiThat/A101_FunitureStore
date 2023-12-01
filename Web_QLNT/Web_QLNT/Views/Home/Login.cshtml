@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string abc = ViewBag.ErrorMessage;
+}
+<center><h1>ĐĂNG NHẬP</h1></center>
+<div class="modal-content">
+    <div class="modal-body">
+        <form id="loginForm" action="@Url.Action("Login", "Home")" method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Tên đăng nhập:</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mật khẩu:</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <center><button type="submit" class="btn btn-primary">Đăng nhập</button></center>
+        </form>
+        <div id="loginErrorMessage" class="text-danger mt-2">
+                <p>@abc</p>
+        </div>
+    </div>
+</div>

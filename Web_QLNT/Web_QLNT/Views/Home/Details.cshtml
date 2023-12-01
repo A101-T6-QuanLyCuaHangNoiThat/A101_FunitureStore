@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<NhaCungCap> dsncc = ViewBag.NCC;
+    List<Loai> dsl = ViewBag.Loai;
+    string tt = Model.TinhTrang.ToString();
+    tt = (tt == "True") ? "Còn Hàng" : "Hết Hàng";
+    string[] dsgc = Model.GhiChu.Split(';');
+    string[] dsct = Model.ChuongTrinhApDung.Split(';');
+}
+@using Web_QLNT.Models;
+@model SanPham
+<style>
+    .product-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .product-info {
+        padding: 20px;
+    }
+
+    .product-description {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .product-table td {
+        padding: 8px;
+    }
+
+    .product-notes {
+        list-style-type: none;
+        padding: 0;
+    }
+
+        .product-notes li {
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+
+            <img src="~/Images/@Model.HinhAnh" alt="Product Image" class="product-image">
+        </div>
+        <div class="col-md-6">
+
+            <div class="product-info">
+                <h2 class="text-danger">@Model.TenSP</h2>
+                <p>Mã sản phẩm: <span style="color: #990000">@Model.MaSP</span> | Tình trạng: <span style="color: #990000">@tt</span> | Thương Hiệu: <span style="color: #990000">@dsncc.Where(t => t.MaNCC == Model.MaNCC).FirstOrDefault().TenNCC</span> </p>
+                <p style="background-color:lightgray">Giá: <span class="text-danger" style="margin-left: 50px;font-weight:bold; font-size:larger">@Model.DonGia</span></p>
+                <br />
+                <form action="~/Home/AddToCart/@Model.MaSP" method="post">
+                    <a class="btn btn-outline-secondary" onclick="decreaseQuantity()">-</a>
+                    <input type="number" name="quantity" id="quantity" value="1" min="1" width="100" />
+                    <a class="btn btn-outline-secondary" onclick="increaseQuantity()">+</a>
+                    <br />
+                    <br />
+                    @{
+                        if (tt == "Còn Hàng")
+                        {
+                            <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
+                        }
+                        else
+                        {
+                            <a disabled class="btn btn-secondary">Hết hàng</a>
+                        }
+                    }
+                </form>
+                @{
+                    foreach (string item in dsct)
+                    {
+                        <p style="margin-left:10px">@item</p>
+                    }
+                }
+                <br />
+                <br />
+                <table class="table table-striped product-table">
+                    <tr>
+                        <th colspan="2">Mô Tả Sản Phẩm</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">@Model.MoTa</td>
+                    </tr>
+                    <tr>
+                        <td>Sản Phẩm</td>
+                        <td>@dsl.Where(t => t.MaLoai == Model.MaLoai).FirstOrDefault().TenLoai</td>
+                    </tr>
+                    <tr>
+                        <td>Bộ sưu tập</td>
+                        <td>@dsncc.Where(t => t.MaNCC == Model.MaNCC).FirstOrDefault().TenNCC</td>
+                    </tr>
+                    <tr>
+                        <td>Kích cỡ</td>
+                        <td>@Model.KichThuoc</td>
+                    </tr>
+                    <tr>
+                        <td>Màu sắc</td>
+                        <td>@Model.MauSac</td>
+                    </tr>
+                    <tr>
+                        <td>Chất liệu</td>
+                        <td>@Model.ChatLieu</td>
+                    </tr>
+                    <tr>
+                        <td>Xuất xứ</td>
+                        <td>@Model.XuatXu</td>
+                    </tr>
+                    <tr>
+                        <td>Đơn vị</td>
+                        <td>@Model.DonVi</td>
+                    </tr>
+                </table>
+                <h4 class="product-description">Ghi chú sản phẩm</h4>
+                <ul class="product-notes">
+                    @{
+                        foreach (string item in dsgc)
+                        {
+                            <li>@item</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function increaseQuantity() {
+        var quantityInput = document.getElementById('quantity');
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+    }
+
+    function decreaseQuantity() {
+        var quantityInput = document.getElementById('quantity');
+        if (parseInt(quantityInput.value) > 1) {
+            quantityInput.value = parseInt(quantityInput.value) - 1;
+        }
+    }
+</script>

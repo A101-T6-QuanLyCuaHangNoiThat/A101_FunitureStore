@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string abc = ViewBag.ErrorMessage;
+}
+<center><h1>ĐĂNG KÝ</h1></center>
+<div class="modal-content">
+    <div class="modal-body">
+        <form id="registerForm" action="@Url.Action("Register", "Home")" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="MaKH" class="form-label">Tên đăng nhập:</label>
+                <input type="text" class="form-control" id="MaKH" name="MaKH">
+            </div>
+            <div class="mb-3">
+                <label for="MatKhau" class="form-label">Mật khẩu:</label>
+                <input type="password" class="form-control" id="MatKhau" name="MatKhau">
+            </div>
+            <div class="mb-3">
+                <label for="ReMatKhau" class="form-label">Nhập lại mật khẩu:</label>
+                <input type="password" class="form-control" id="ReMatKhau" name="ReMatKhau">
+            </div>
+            <div class="mb-3">
+                <label for="HoTen" class="form-label">Họ và tên:</label>
+                <input type="text" class="form-control" id="HoTen" name="HoTen">
+            </div>
+            <div class="mb-3">
+                <label for="Email" class="form-label">Email:</label>
+                <input type="text" class="form-control" id="Email" name="Email">
+            </div>
+            <div class="mb-3">
+                <label for="NgaySinh" class="form-label">Ngày Sinh:</label>
+                <input type="date" class="form-control" id="NgaySinh" name="NgaySinh">
+            </div>
+            <div class="mb-3">
+                <label for="DienThoai" class="form-label">Số Điện Thoại:</label>
+                <input type="text" class="form-control" id="DienThoai" name="DienThoai">
+            </div>
+            <div class="mb-3">
+                <label for="ThanhPho">Thành phố:</label>
+                <select id="ThanhPho" name="ThanhPho">
+                    <option value="Hà Nội">Hà Nội</option>
+                    <option value="Hồ Chí Minh" selected>Hồ Chí Minh</option>
+                    <option value="Đà Nẵng">Đà Nẵng</option>
+                    <option value="Hải Phòng">Hải Phòng</option>
+                    <option value="Cần Thơ">Cần Thơ</option>
+                    <option value="Hải Dương">Hải Dương</option>
+                    <option value="Bắc Giang">Bắc Giang</option>
+                    <option value="Bắc Kạn">Bắc Kạn</option>
+                    <option value="Bạc Liêu">Bạc Liêu</option>
+                    <option value="Bắc Ninh">Bắc Ninh</option>
+                    <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                    <option value="Bình Dương">Bình Dương</option>
+                    <option value="Bình Phước">Bình Phước</option>
+                    <option value="Bình Thuận">Bình Thuận</option>
+                    <option value="Cà Mau">Cà Mau</option>
+                    <option value="Đắk Lắk">Đắk Lắk</option>
+                    <option value="Đắk Nông">Đắk Nông</option>
+                    <option value="Điện Biên">Điện Biên</option>
+                    <option value="Đồng Nai">Đồng Nai</option>
+                    <option value="Đồng Tháp">Đồng Tháp</option>
+                    <option value="Gia Lai">Gia Lai</option>
+                    <option value="Hà Giang">Hà Giang</option>
+                    <option value="Hà Nam">Hà Nam</option>
+                    <option value="HA_TINH">Hà Tĩnh</option>
+                    <option value="HAI_DUONG">Hải Dương</option>
+                    <option value="HAU_GIANG">Hậu Giang</option>
+                    <option value="HOA_BINH">Hòa Bình</option>
+                    <option value="Hưng Yên">Hưng Yên</option>
+                    <option value="Khánh Hòa">Khánh Hòa</option>
+                    <option value="Kiên Giang">Kiên Giang</option>
+                    <option value="Kon Tum">Kon Tum</option>
+                    <option value="Lai Châu">Lai Châu</option>
+                    <option value="Lâm Đồng">Lâm Đồng</option>
+                    <option value="Lạng Sơn">Lạng Sơn</option>
+                    <option value="Lào Cai">Lào Cai</option>
+                    <option value="Long An">Long An</option>
+                    <option value="Nam Định">Nam Định</option>
+                    <option value="Nghệ An">Nghệ An</option>
+                    <option value="Ninh Bình">Ninh Bình</option>
+                    <option value="Ninh Thuận">Ninh Thuận</option>
+                    <option value="Phú Thọ">Phú Thọ</option>
+                    <option value="Phú Yên">Phú Yên</option>
+                    <option value="Quảng Bình">Quảng Bình</option>
+                    <option value="Quảng Nam">Quảng Nam</option>
+                    <option value="Quảng Ngãi">Quảng Ngãi</option>
+                    <option value="Quảng Ninh">Quảng Ninh</option>
+                    <option value="Quảng Trị">Quảng Trị</option>
+                    <option value="Sóc Trăng">Sóc Trăng</option>
+                    <option value="Sơn La">Sơn La</option>
+                    <option value="Tây Ninh">Tây Ninh</option>
+                    <option value="Thái Bình">Thái Bình</option>
+                    <option value="Thái Nguyên">Thái Nguyên</option>
+                    <option value="Thanh Hóa">Thanh Hóa</option>
+                    <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                    <option value="Tiền Giang">Tiền Giang</option>
+                    <option value="Trà Vinh">Trà Vinh</option>
+                    <option value="Tuyên Quang">Tuyên Quang</option>
+                    <option value="Vĩnh Long">Vĩnh Long</option>
+                    <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                    <option value="Yên Bái">Yên Bái</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="Quan">Quận:</label>
+                <select id="Quan" name="Quan">
+                    <option value="Quận 1">Quận 1</option>
+                    <option value="Quận 2">Quận 2</option>
+                    <option value="Quận 3">Quận 3</option>
+                    <option value="Quận 4">Quận 4</option>
+                    <option value="Quận 5">Quận 5</option>
+                    <option value="Quận 6">Quận 6</option>
+                    <option value="Quận 7">Quận 7</option>
+                    <option value="Quận 8">Quận 8</option>
+                    <option value="Quận 9">Quận 9</option>
+                    <option value="Quận 10">Quận 10</option>
+                    <option value="Quận 11">Quận 11</option>
+                    <option value="Quận 12">Quận 12</option>
+                    <option value="Gò Vấp">Gò Vấp</option>
+                    <option value="Tân Bình">Tân Bình</option>
+                    <option value="Tân Phú" selected>Tân Phú</option>
+                    <option value="Bình Thạnh">Bình Thạnh</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="Phuong">Phường:</label>
+                <select id="Phuong" name="Phuong">
+                    <option value="Phú Thạnh">Phú Thạnh</option>
+                    <option value="Sơn Kỳ" selected>Sơn Kỳ</option>
+                    <option value="Tân Quý">Tân Quý</option>
+                    <option value="Tân Thành">Tân Thành</option>
+                    <option value="Tân Thới Hòa">Tân Thới Hòa</option>
+                    <option value="Tân Thới Nhất">Tân Thới Nhất</option>
+                    <option value="Tân Thới Sơn">Tân Thới Sơn</option>
+                    <option value="Tân Thọ Hòa">Tân Thọ Hòa</option>
+                    <option value="Tân Thọ Nhất">Tân Thọ Nhất</option>
+                    <option value="Tây Thạnh">Tây Thạnh</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="Duong" class="form-label">Đường:</label>
+                <input type="text" class="form-control" id="Duong" name="Duong">
+            </div>
+            <div class="mb-3">
+                <label for="SoNha" class="form-label">Số Nhà:</label>
+                <input type="text" class="form-control" id="SoNha" name="SoNha">
+            </div>
+            <div class="mb-3">
+                <label for="fUpLoad" class="form-label">Ảnh đại diện:</label>
+                <input type="file" class="form-control" id="fUpLoad" name="fUpLoad">
+            </div>
+            <center><button type="submit" class="btn btn-primary">Đăng ký</button></center>
+        </form>
+        <div id="loginErrorMessage" class="text-danger mt-2">
+            <p>@abc</p>
+        </div>
+    </div>
+</div>
+

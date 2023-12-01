@@ -1,0 +1,469 @@
+﻿@using Web_QLNT.Models;
+@using System.Globalization;
+@using System.Web;
+@{
+    string propic = null;
+    string prodob = null;
+    KhachHang kh = new KhachHang();
+    if (Session["KhachHang"] != null)
+    {
+        kh = Session["KhachHang"] as Web_QLNT.Models.KhachHang;
+        prodob = kh.NgaySinh.HasValue
+    ? kh.NgaySinh.Value.ToString("yyyy-MM-dd")
+    : string.Empty;
+        if (kh.HinhAnh != null)
+        {
+            propic = kh.HinhAnh;
+        }
+        else
+        {
+            propic = "logo.jpg";
+        }
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <style>
+        p a {
+            text-decoration: none;
+        }
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #990000; 
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            header img {
+                width: 100px; 
+                height: auto;
+            }
+
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+
+            .search-bar input[type="text"] {
+                width: 150px;
+                padding: 8px;
+                box-sizing: border-box;
+            }
+
+        .search-button {
+            font-size: 20px;
+            display: flex;
+        }
+
+        .user-actions {
+            align-items: center;
+        }
+
+            .user-actions button {
+                color: black;
+                margin: 0 10px;
+                text-decoration: none;
+            }
+
+        .cart-icon {
+            font-size: 24px;
+        }
+
+        .greynav {
+            background-color: lightgray;
+        }
+
+        .navmenu {
+            text-decoration-color: #990000;
+        }
+
+            .navmenu a {
+                text-decoration: none;
+                color: crimson;
+                text-transform: uppercase;
+                font-size: large;
+            }
+
+        .profile-container {
+        }
+
+        .profile-avatar {
+            width: 40px; 
+            height: 40px;
+            border-radius: 50%; 
+            border: 2px solid #fff; 
+            margin-right: 10px; 
+        }
+
+        .user-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            float: left;
+            min-width: 10rem;
+            padding: 0.5rem 0;
+            margin: 0.125rem 0 0;
+            font-size: 1rem;
+            color: #212529;
+            text-align: left;
+            list-style: none;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 0.25rem;
+        }
+
+        .user-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .footer {
+            padding-top: 2em;
+            padding-bottom: 2em;
+        }
+        .footer a {
+            color: black; 
+            text-decoration: none; 
+        }
+
+        .footer a:hover {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+
+        @*Header gồm Logo, Thanh Tìm Kiếm, Thao Tác Khách Hàng và Mua Hàng*@
+        <div class="row">
+            <div class="container">
+                <header>
+                    <div class="col-2">
+                        <a href="~/Home/Index"><img src="~/Images/logo.jpg" alt="Logo"></a>
+                    </div>
+
+                    <!-- Thanh tìm kiếm -->
+                    <div class="col-3">
+                        <div class="input-group search-bar">
+                            <input type="text" style="width: 200px;" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <a href="#" class="btn btn-light search-button">&#128269;</a>
+                    </div>
+
+                    <!-- Đăng nhập/đăng ký và giỏ hàng -->
+                    <div class="col-6">
+                        <div class="user-actions">
+                            @if (Session["KhachHang"] != null)
+                            {
+                                <div class="profile-container">
+                                    <div class="user-dropdown">
+                                        <img src="~/Images/@propic" alt="Avatar" class="profile-avatar" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <ul class="dropdown-menu">
+                                            <li><a id="changeInfoLink" class="dropdown-item" href="#">Thay đổi thông tin</a></li>
+                                            <li><a id="changePasswordLink" class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                                            <li><a id="deleteLink" class="dropdown-item" href="#">Xóa tài khoản</a></li>
+                                        </ul>
+                                    </div>
+                                    <a class="btn btn-light" href="@Url.Action("Logout", "Home")">Đăng xuất</a>
+                                    <a href="~/Home/ViewCart" class="btn btn-light cart-icon">&#128722;</a>
+                                </div>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                    Đăng nhập
+                                </button>
+                                <a href="~/Home/ViewCart" class="btn btn-light cart-icon">&#128722;</a>
+                                @*<a href="#" class="btn btn-light">Đăng ký</a>*@
+                            }
+
+                        </div>
+                    </div>
+                </header>
+            </div>
+        </div>
+
+        @*Navbar gồm các loại sản phẩm*@
+        <div class="row">
+            <div class="greynav navbar navbar-expand-lg navbar-fixed-top">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item navmenu">
+                                <a class="nav-link" href="~/Home/GetSP/1">sofa</a>
+                            </li>
+                            <li class="nav-item navmenu">
+                                <a class="nav-link" href="~/Home/GetSP/2">ghế thư giãn</a>
+                            </li>
+                            <li class="nav-item navmenu">
+                                <a class="nav-link" href="~/Home/GetSP/3">bàn</a>
+                            </li>
+                            <li class="nav-item navmenu">
+                                <a class="nav-link" href="~/Home/GetSP/4">ghế</a>
+                            </li>
+                            <li class="nav-item navmenu">
+                                <a class="nav-link" href="~/Home/GetSP/5">giường nệm</a>
+                            </li>
+                            <li class="nav-item navmenu">
+                                <a class="nav-link" href="~/Home/GetSP/6">chăn ga gối</a>
+                            </li>
+                            <li class="nav-item navmenu">
+                                <a class="nav-link" href="~/Home/GetSP/7">tủ kệ</a>
+                            </li>
+                            <li class="nav-item navmenu">
+                                <a class="nav-link" href="~/Home/GetSP/8">nội thất văn phòng</a>
+                            </li>
+                            <li class="nav-item navmenu">
+                                <a class="nav-link" href="~/Home/GetSP/9">trang trí nhà cửa</a>
+                            </li>
+                            <li class="nav-item navmenu">
+                                <a class="nav-link" href="~/Home/GetSP/10">nhà bếp</a>
+                            </li>
+                            <li class="nav-item navmenu">
+                                <a class="nav-link" href="~/Home/GetSP/11">phòng tắm</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*Nội dung các trang chỉnh sửa tùy ý (hiển thị danh sách sản phẩm, chi tiết sản phẩm, giỏ hàng, ....*@
+        <div class="container">
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+
+        @*Footer*@
+        <footer style=" background-color:lightgrey" class="footer text-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5>CÔNG TY CỔ PHẦN NỘI THẤT BAYA</h5>
+                        <p>
+                            Thương hiệu nội thất và trang trí hàng đầu Việt Nam, góp phần xây dựng thêm nhiều tổ ấm mỗi ngày.
+                        </p>
+
+                        <p>
+                            Tầng 08, Tòa nhà Pearl Plaza, Số 561A Điện Biên Phủ, Phường 25, Quận Bình Thạnh, Thành phố Hồ Chí Minh
+                        </p>
+                        <p>
+                            1900 63 64 76
+                        </p>
+                        <p>webshop@baya.vn</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Về BAYA</h5>
+                        <ul>
+                            <li><a href="#">Giới thiệu</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Hệ thống cửa hàng</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Hỗ trợ khách hàng</h5>
+                        <ul>
+                            <li><a href="#">Câu hỏi thường gặp</a></li>
+                            <li><a href="#">Hướng dẫn đặt hàng</a></li>
+                            <li><a href="#">Mua hàng trả góp</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <h5>Hỗ trợ kỹ thuật</h5>
+                        <ul>
+                            <li><a href="#">Chính sách bảo hành</a></li>
+                            <li><a href="#">Chi phí vận chuyển</a></li>
+                            <li><a href="#">Chính sách đổi trả và hoàn tiền</a></li>
+                            <li><a href="#">Chính sách vận chuyển và giao nhận</a></li>
+                            <li><a href="#">Các hình thức thanh toán</a></li>
+                            <li><a href="#">Chính sách bảo mật thông tin</a></li>
+                            <li><a href="#">Hướng dẫn thanh toán VNPAY-QR trên website</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    @*Cửa sổ đăng nhập giống Message Box*@
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Đăng nhập</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Thêm các trường nhập liệu cho đăng nhập -->
+                    <form id="loginForm" action="@Url.Action("Login", "Home")" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Tên đăng nhập:</label>
+                            <input type="text" class="form-control" id="username" name="username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Mật khẩu:</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                        <center><button type="submit" class="btn btn-primary">Đăng nhập</button></center>
+                    </form>
+                    <p>Nếu chưa có, <a href="/Home/Register">Tạo Tài Khoản</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Cửa sổ thay đổi thông tin khách hàng giống Message Box*@
+    <div class="modal fade" id="changeInfoModal" tabindex="-1" aria-labelledby="changeInfoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changeInfoModal">Thay Đổi Thông Tin</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Thêm các trường nhập liệu cho đăng nhập -->
+                    <form id="EditForm" action="@Url.Action("EditKH", "Home", new { id = @kh.MaKH })" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <img src="~/Images/@kh.HinhAnh" width="113" height="115" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="MaKH" class="form-label">Tên đăng nhập:</label>
+                            <input type="text" class="form-control" id="MaKH" name="MaKH" value="@kh.MaKH" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="HoTen" class="form-label">Họ và tên:</label>
+                            <input type="text" class="form-control" id="HoTen" name="HoTen" value="@kh.HoTen">
+                        </div>
+                        <div class="mb-3">
+                            <label for="Email" class="form-label">Email:</label>
+                            <input type="text" class="form-control" id="Email" name="Email" value="@kh.Email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="NgaySinh" class="form-label">Ngày Sinh:</label>
+                            <input type="date" class="form-control" id="NgaySinh" name="NgaySinh" value="@prodob">
+                        </div>
+                        <div class="mb-3">
+                            <label for="DienThoai" class="form-label">Số Điện Thoại:</label>
+                            <input type="text" class="form-control" id="DienThoai" name="DienThoai" value="@kh.DienThoai">
+                        </div>
+                        <div class="mb-3">
+                            <label for="DiaChi" class="form-label">Địa Chỉ:</label>
+                            <input type="text" class="form-control" id="DiaChi" name="DiaChi" value="@kh.DiaChi">
+                        </div>
+                        <div class="mb-3">
+                            <label for="fUpLoad" class="form-label">Ảnh đại diện:</label>
+                            <input type="file" class="form-control" id="fUpLoad" name="fUpLoad" value="@kh.HinhAnh">
+                        </div>
+                        <center><button type="submit" class="btn btn-primary">Lưu Thay Đổi</button></center>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Cửa sổ thay đổi mật khẩu tài khoản khách hàng giống Message Box*@
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="changePasswordModal">Đổi mật khẩu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Thêm các trường nhập liệu cho đăng nhập -->
+                    <form id="changePasswordForm" action="@Url.Action("changePassword", "Home", new { id = @kh.MaKH })" method="post">
+                        <div class="mb-3">
+                            <label for="MatkhauCu" class="form-label">Mật khẩu cũ:</label>
+                            <input type="password" class="form-control" id="MatkhauCu" name="MatkhauCu">
+                        </div>
+                        <div class="mb-3">
+                            <label for="MatKhauMoi" class="form-label">Mật khẩu mới:</label>
+                            <input type="password" class="form-control" id="MatKhauMoi" name="MatKhauMoi">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ReMatKhauMoi" class="form-label">Nhập lại mật khẩu mới:</label>
+                            <input type="password" class="form-control" id="ReMatKhauMoi" name="ReMatKhauMoi">
+                        </div>
+                        <center><button type="submit" class="btn btn-primary">Lưu Thay Đổii</button></center>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Cửa sổ xóa tài khoản khách hàng giống Message Box*@
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModal">Xóa tài khoản</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body">
+                        Bạn có chắc chắn muốn xóa tài khoản không?
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-secondary" data-dismiss="modal">Hủy</a>
+                        <a href="~/Home/deleteKH/@kh.MaKH" class="btn btn-danger">Xác Nhận Xóa</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    @*Hàm mở các cửa sổ trên khi click vào thẻ a*@
+    <script>
+        $(document).ready(function () {
+            $('#changeInfoLink').click(function () {
+                $('#changeInfoModal').modal('show');
+            });
+
+            $('#changePasswordLink').click(function () {
+                $('#changePasswordModal').modal('show');
+            });
+
+            $('#deleteLink').click(function () {
+                $('#deleteModal').modal('show');
+            });
+        });
+    </script>
+</body>
+</html>
