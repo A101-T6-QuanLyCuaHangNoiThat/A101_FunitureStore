@@ -47,7 +47,7 @@ namespace BLL
         {
             try
             {
-                return db.CTHoaDons.Where(r=>r.MaHD == values).Select(r => new { r.SanPham.TenSP,r.SoLuong});
+                return db.CTHoaDons.Where(r=>r.MaHD == values).Select(r => new { r.SanPham.TenSP,r.SoLuong,r.SanPham.DonGia});
             }
             catch (Exception)
             {

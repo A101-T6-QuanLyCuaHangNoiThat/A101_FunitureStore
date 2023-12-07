@@ -51,6 +51,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cbLoaiSanPham = new System.Windows.Forms.ComboBox();
+            this.btnSetTinhTrang = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtSP)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -120,6 +121,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnSetTinhTrang);
             this.groupBox1.Controls.Add(this.IDSP);
             this.groupBox1.Controls.Add(this.btndel);
             this.groupBox1.Controls.Add(this.btnedit);
@@ -151,7 +153,7 @@
             // 
             // btndel
             // 
-            this.btndel.Location = new System.Drawing.Point(245, 283);
+            this.btndel.Location = new System.Drawing.Point(346, 468);
             this.btndel.Name = "btndel";
             this.btndel.Size = new System.Drawing.Size(109, 23);
             this.btndel.TabIndex = 4;
@@ -161,7 +163,7 @@
             // 
             // btnedit
             // 
-            this.btnedit.Location = new System.Drawing.Point(130, 283);
+            this.btnedit.Location = new System.Drawing.Point(231, 468);
             this.btnedit.Name = "btnedit";
             this.btnedit.Size = new System.Drawing.Size(109, 23);
             this.btnedit.TabIndex = 4;
@@ -171,7 +173,7 @@
             // 
             // btnadd
             // 
-            this.btnadd.Location = new System.Drawing.Point(16, 283);
+            this.btnadd.Location = new System.Drawing.Point(117, 468);
             this.btnadd.Name = "btnadd";
             this.btnadd.Size = new System.Drawing.Size(109, 23);
             this.btnadd.TabIndex = 4;
@@ -291,6 +293,16 @@
             this.cbLoaiSanPham.TabIndex = 8;
             this.cbLoaiSanPham.SelectedValueChanged += new System.EventHandler(this.cbLoaiSanPham_SelectedValueChanged);
             // 
+            // btnSetTinhTrang
+            // 
+            this.btnSetTinhTrang.Location = new System.Drawing.Point(117, 439);
+            this.btnSetTinhTrang.Name = "btnSetTinhTrang";
+            this.btnSetTinhTrang.Size = new System.Drawing.Size(338, 23);
+            this.btnSetTinhTrang.TabIndex = 6;
+            this.btnSetTinhTrang.Text = "Set tình trạng hàng hoá";
+            this.btnSetTinhTrang.UseVisualStyleBackColor = true;
+            this.btnSetTinhTrang.Click += new System.EventHandler(this.btnSetTinhTrang_Click);
+            // 
             // GUISanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,5 +355,6 @@
         private System.Windows.Forms.Label IDSP;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbLoaiSanPham;
+        private System.Windows.Forms.Button btnSetTinhTrang;
     }
 }

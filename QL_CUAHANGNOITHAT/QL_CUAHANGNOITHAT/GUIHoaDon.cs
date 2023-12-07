@@ -29,7 +29,7 @@ namespace QL_CUAHANGNOITHAT
                 lbTitle.Text = "Hoá đơn";
                 label1.ForeColor= Color.Black;
                 label2.ForeColor = Color.DimGray;
-                PNHoaDon pn = new PNHoaDon();
+                PNHoaDon pn = new PNHoaDon(UserAccout);
                 pnMain.Controls.Clear();
                 pnMain.Controls.Add(pn);
             }
@@ -54,13 +54,22 @@ namespace QL_CUAHANGNOITHAT
 
         private void TabPhieuNhap_Click(object sender, EventArgs e)
         {
-            flag = true;
+            flag = true;          
             tabClick();
         }
 
         private void GUIHoaDon_Load(object sender, EventArgs e)
         {
-            tabClick();
+            if (UserAccout.MaNhom == "User")
+            {
+                TabPhieuNhap.Visible = false;
+                tabClick();
+            }
+            else
+            {
+                tabClick();
+            }
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -74,5 +83,7 @@ namespace QL_CUAHANGNOITHAT
             flag = true;
             tabClick();
         }
+
+
     }
 }

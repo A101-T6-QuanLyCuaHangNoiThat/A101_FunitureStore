@@ -13,12 +13,22 @@ namespace QL_CUAHANGNOITHAT
     public partial class GUISanPham : UserControl
     {
         BLL_SanPham sp = new BLL_SanPham();
-
-        public GUISanPham()
+        NhanVien UserAccout { get; set; }
+        public GUISanPham(NhanVien UserAccout)
         {
+            this.UserAccout = UserAccout;
             InitializeComponent();
         }
-
+        private void setActionForm()
+        {
+            if (UserAccout.MaNhom == "User")
+            {
+                btnadd.Visible = false;
+                btndel.Visible = false;
+                btnedit.Visible = false;
+                btnSetTinhTrang.Text = "Xem chi tiết sản phẩm";
+            }
+        }
         private void txtfind_TextChanged(object sender, EventArgs e)
         {
 
@@ -63,6 +73,7 @@ namespace QL_CUAHANGNOITHAT
 
         private void SanPham_Load(object sender, EventArgs e)
         {
+            setActionForm();
             cbLoaiSanPham.DataSource = sp.GetLoaiSanPham();
             cbLoaiSanPham.DisplayMember = "TenLoai";
             cbLoaiSanPham.ValueMember = "MaLoai";
@@ -71,6 +82,7 @@ namespace QL_CUAHANGNOITHAT
             {
                 btnedit.Enabled = false;
                 btndel.Enabled = false;
+                btnSetTinhTrang.Enabled = false;
             }
         }
 
@@ -100,6 +112,7 @@ namespace QL_CUAHANGNOITHAT
         {
             btnedit.Enabled = true;
             btndel.Enabled = true;
+            btnSetTinhTrang.Enabled = true;
         }
 
         private void dtSP_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -145,6 +158,45 @@ namespace QL_CUAHANGNOITHAT
             }
 
         }
+
+        private void btnSetTinhTrang_Click(object sender, EventArgs e)
+        {
+            if (btnSetTinhTrang.Text == "Xem chi tiết sản phẩm")
+            {
+                ThemSanPham fr = new ThemSanPham();
+                fr.FormClosed += new FormClosedEventHandler(fr_formclosed);
+                fr.EDIT = true;
+                fr.ADD = false;
+                fr.IsView = true;
+                fr.IDItem = IDSP.Text;
+                fr.Show();
+            }
+            else
+            {
+                if (radioButton1.Checked == true)
+                {
+                    if (sp.checkSLTon(IDSP.Text) == 0)
+                    {
+                        MessageBox.Show("Số lượng tồn không hợp lệ\nSố lượng tồn : 0");
+                    }
+                    else
+                    {
+                        if (sp.setTinhTrang(IDSP.Text, true) == true)
+                        {
+                            MessageBox.Show("Cập nhập tình trạng thành công");
+                        }
+                    }
+                }
+                else
+                {
+                    if (sp.setTinhTrang(IDSP.Text, false) == true)
+                    {
+                        MessageBox.Show("Cập nhập tình trạng thành công");
+                    }
+                }
+            }
+        }
+
 
     }
     

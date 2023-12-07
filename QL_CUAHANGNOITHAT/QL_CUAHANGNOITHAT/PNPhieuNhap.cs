@@ -29,16 +29,24 @@ namespace QL_CUAHANGNOITHAT
 
         private void dtPhieuNhap_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int selectedRowIndex = dtPhieuNhap.SelectedCells[0].RowIndex;
-            string selectedValue = dtPhieuNhap.Rows[selectedRowIndex].Cells[0].Value.ToString();
+            try
+            {
+                int selectedRowIndex = dtPhieuNhap.SelectedCells[0].RowIndex;
+                string selectedValue = dtPhieuNhap.Rows[selectedRowIndex].Cells[0].Value.ToString();
 
-            PhieuNhap phieuNhap = pn.FindPhieuNhap(selectedValue);
+                PhieuNhap phieuNhap = pn.FindPhieuNhap(selectedValue);
 
-            txtMaPN.Text = phieuNhap.MaPN;
-            txtTenNV.Text = phieuNhap.NhanVien.TenNV;
-            txtNgayLap.Text = phieuNhap.NgayLap.ToString();
+                txtMaPN.Text = phieuNhap.MaPN;
+                txtTenNV.Text = phieuNhap.NhanVien.TenNV;
+                txtNgayLap.Text = phieuNhap.NgayLap.ToString();
 
-            dtChiTietPhieuNhap.DataSource = pn.GetCTPhieuNhap(phieuNhap.MaPN);
+                dtChiTietPhieuNhap.DataSource = pn.GetCTPhieuNhap(phieuNhap.MaPN);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

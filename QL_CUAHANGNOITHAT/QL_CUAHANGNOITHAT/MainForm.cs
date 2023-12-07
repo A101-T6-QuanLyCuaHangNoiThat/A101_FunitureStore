@@ -41,6 +41,10 @@ namespace QL_CUAHANGNOITHAT
         private void MainForm_Load(object sender, EventArgs e)
         {
             MainPN_load();
+            if (UserAccount.MaNhom == "User")
+            {
+                btnEMPUser.Enabled = false;
+            }
         }
         private void MainPN_load()
         {
@@ -49,13 +53,13 @@ namespace QL_CUAHANGNOITHAT
                 case 1:
                     {
                         MainPN.Controls.Clear();
-                        Control Sanpham_1 = new GUISanPham();                    
+                        Control Sanpham_1 = new GUISanPham(UserAccount);                    
                         MainPN.Controls.Add(Sanpham_1);
                     } break;
                 case 2:
                     {
                         MainPN.Controls.Clear();
-                        Control Khachhang_2 = new GUIKhachHang();
+                        Control Khachhang_2 = new GUIKhachHang(UserAccount);
                         MainPN.Controls.Add(Khachhang_2);
                     } break;
                 case 3:
@@ -110,6 +114,8 @@ namespace QL_CUAHANGNOITHAT
             MainPN_ID = IDMainPN.IDDoanhThu;
             MainPN_load();
         }
+
+
 
     }
 }

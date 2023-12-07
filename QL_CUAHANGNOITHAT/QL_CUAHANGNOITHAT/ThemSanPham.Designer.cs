@@ -60,6 +60,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.txtSL = new System.Windows.Forms.TextBox();
             this.btnLuu = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDonGia = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtMoTa
@@ -345,6 +347,24 @@
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(457, 425);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Đơn giá :";
+            // 
+            // txtDonGia
+            // 
+            this.txtDonGia.Location = new System.Drawing.Point(593, 418);
+            this.txtDonGia.Name = "txtDonGia";
+            this.txtDonGia.Size = new System.Drawing.Size(230, 20);
+            this.txtDonGia.TabIndex = 26;
+            this.txtDonGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSL_KeyPress);
+            // 
             // ThemSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -358,6 +378,7 @@
             this.Controls.Add(this.cbNhaCC);
             this.Controls.Add(this.txtDonVi);
             this.Controls.Add(this.txtXuarSu);
+            this.Controls.Add(this.txtDonGia);
             this.Controls.Add(this.txtSL);
             this.Controls.Add(this.txtChatLieu);
             this.Controls.Add(this.txtMauSac);
@@ -375,6 +396,7 @@
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -426,5 +448,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtSL;
         private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtDonGia;
     }
 }

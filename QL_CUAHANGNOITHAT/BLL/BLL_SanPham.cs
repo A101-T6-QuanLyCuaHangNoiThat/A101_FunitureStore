@@ -94,5 +94,38 @@ namespace BLL
                 return false;
             }
         }
+        public bool setTinhTrang(string IDProduct, bool statuses)
+        {
+            try
+            {
+                SanPham item = db.SanPhams.Where(r => r.MaSP == IDProduct).FirstOrDefault();
+                item.TinhTrang = statuses;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public int checkSLTon(string idproduct)
+        {
+            try
+            {
+                if (db.SanPhams.Where(r => r.MaSP == idproduct).Select(r => r.SoLuongTon).FirstOrDefault() == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    int values = int.Parse(db.SanPhams.Where(r => r.MaSP == idproduct).Select(r => r.SoLuongTon).FirstOrDefault().ToString());
+                    return values;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
     }
 }

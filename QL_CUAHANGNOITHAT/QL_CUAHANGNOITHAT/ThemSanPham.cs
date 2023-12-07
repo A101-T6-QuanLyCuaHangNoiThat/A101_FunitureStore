@@ -15,6 +15,7 @@ namespace QL_CUAHANGNOITHAT
         BLL_SanPham SP = new BLL_SanPham();
         public bool ADD { get; set; }
         public bool EDIT { get; set; }
+        public bool IsView { get; set; }
         public string IDItem { get; set; }
         public ThemSanPham()
         {
@@ -39,6 +40,7 @@ namespace QL_CUAHANGNOITHAT
                 item.ChuongTrinhApDung = txtCTAP.Text;
                 item.XuatXu = txtXuarSu.Text;
                 item.GhiChu = txtGhiChu.Text;
+                item.DonGia = int.Parse(txtDonGia.Text);
                 item.SoLuongTon = Int32.Parse(txtSL.Text);
 
                 if (SP.insertSanPham(item) == true)
@@ -66,6 +68,7 @@ namespace QL_CUAHANGNOITHAT
                 item.ChuongTrinhApDung = txtCTAP.Text;
                 item.XuatXu = txtXuarSu.Text;
                 item.GhiChu = txtGhiChu.Text;
+                item.DonGia = int.Parse(txtDonGia.Text);
                 item.SoLuongTon = Int32.Parse(txtSL.Text);
 
                 if (SP.editSanPham(item) == true)
@@ -92,6 +95,10 @@ namespace QL_CUAHANGNOITHAT
 
             if (EDIT == true)
             {
+                if (IsView == true)
+                {
+                    btnLuu.Visible = false;
+                }
                 lbIDSP.Text = IDItem;
                 loadItem();
             }
@@ -119,6 +126,7 @@ namespace QL_CUAHANGNOITHAT
             txtCTAP.Text = item.ChuongTrinhApDung;
             txtGhiChu.Text = item.GhiChu;
             txtSL.Text = item.SoLuongTon.ToString();
+            txtDonGia.Text = item.DonGia.ToString();
             cbNhaCC.SelectedValue = item.MaNCC;
             cbNhaCC.Enabled = false;
             cbLoaiSP.SelectedValue = item.MaLoai;

@@ -13,13 +13,19 @@ namespace QL_CUAHANGNOITHAT
     public partial class PNHoaDon : UserControl
     {
         BLLHoaDon hd = new BLLHoaDon();
-        public PNHoaDon()
+        public NhanVien UserAccout { get; set; }
+        public PNHoaDon(NhanVien UserAccout)
         {
+            this.UserAccout = UserAccout;
             InitializeComponent();
         }
 
         private void PNHoaDon_Load(object sender, EventArgs e)
         {
+            if (UserAccout.MaNhom == "User")
+            {
+                btnDel.Visible = false;
+            }
             dtHoaDon.DataSource = hd.GetHoaDon(""); 
             if(txtMaHD.Text == "")
             {

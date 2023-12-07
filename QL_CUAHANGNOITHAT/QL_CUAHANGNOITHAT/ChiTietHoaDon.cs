@@ -25,9 +25,7 @@ namespace QL_CUAHANGNOITHAT
             DateTime dateTime = DateTime.Parse( HD.NgayLap.ToString());
             lbNgaylap.Text = dateTime.ToString("dd/MM/yyyy");
             lbTenKH.Text = HD.KhachHang.HoTen;
-
             dtCHHD.DataSource = CTHD;
-
             lbTongtien.Text=HD.TongTien.ToString();
         }
     }

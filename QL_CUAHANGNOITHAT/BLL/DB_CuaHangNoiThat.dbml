@@ -27,6 +27,7 @@
       <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="SoLuongTon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="HinhAnh" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DonGia" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Association Name="SanPham_CTHoaDon" Member="CTHoaDons" ThisKey="MaSP" OtherKey="MaSP" Type="CTHoaDon" />
       <Association Name="SanPham_CTPhieuNhap" Member="CTPhieuNhaps" ThisKey="MaSP" OtherKey="MaSP" Type="CTPhieuNhap" />
       <Association Name="Loai_SanPham" Member="Loai" ThisKey="MaLoai" OtherKey="MaLoai" Type="Loai" IsForeignKey="true" />
@@ -50,7 +51,7 @@
       <Column Name="MaKH" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="MaNV" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="TinhTrang" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Association Name="HoaDon_CTHoaDon" Member="CTHoaDons" ThisKey="MaHD" OtherKey="MaHD" Type="CTHoaDon" />
       <Association Name="KhachHang_HoaDon" Member="KhachHang" ThisKey="MaKH" OtherKey="MaKH" Type="KhachHang" IsForeignKey="true" />
       <Association Name="NhanVien_HoaDon" Member="NhanVien" ThisKey="MaNV" OtherKey="MaNV" Type="NhanVien" IsForeignKey="true" />

@@ -34,21 +34,26 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbClient = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbIncome = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbSpending = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.dtDoanhThu = new System.Windows.Forms.DataGridView();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbDoanhThu = new System.Windows.Forms.Label();
+            this.btnExport = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -61,6 +66,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDoanhThu)).BeginInit();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -104,7 +111,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(179)))), ((int)(((byte)(255)))));
-            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.lbClient);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Location = new System.Drawing.Point(62, 95);
@@ -112,15 +119,16 @@
             this.panel3.Size = new System.Drawing.Size(252, 133);
             this.panel3.TabIndex = 3;
             // 
-            // pictureBox2
+            // lbClient
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(20, 19);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(71, 89);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.lbClient.AutoSize = true;
+            this.lbClient.Font = new System.Drawing.Font("Vinhan", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbClient.ForeColor = System.Drawing.Color.White;
+            this.lbClient.Location = new System.Drawing.Point(122, 67);
+            this.lbClient.Name = "lbClient";
+            this.lbClient.Size = new System.Drawing.Size(30, 26);
+            this.lbClient.TabIndex = 1;
+            this.lbClient.Text = "12";
             // 
             // label2
             // 
@@ -133,16 +141,15 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Client";
             // 
-            // label3
+            // pictureBox2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Vinhan", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(122, 67);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 26);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "12";
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(20, 19);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(71, 89);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // panel4
             // 
@@ -167,7 +174,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(153)))), ((int)(((byte)(0)))));
-            this.panel5.Controls.Add(this.label4);
+            this.panel5.Controls.Add(this.lbIncome);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.pictureBox4);
             this.panel5.Location = new System.Drawing.Point(369, 95);
@@ -175,16 +182,16 @@
             this.panel5.Size = new System.Drawing.Size(252, 133);
             this.panel5.TabIndex = 3;
             // 
-            // label4
+            // lbIncome
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Vinhan", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(122, 67);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 26);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "12";
+            this.lbIncome.AutoSize = true;
+            this.lbIncome.Font = new System.Drawing.Font("Vinhan", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbIncome.ForeColor = System.Drawing.Color.White;
+            this.lbIncome.Location = new System.Drawing.Point(102, 67);
+            this.lbIncome.Name = "lbIncome";
+            this.lbIncome.Size = new System.Drawing.Size(24, 20);
+            this.lbIncome.TabIndex = 1;
+            this.lbIncome.Text = "12";
             // 
             // label5
             // 
@@ -230,7 +237,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.panel7.Controls.Add(this.label6);
+            this.panel7.Controls.Add(this.lbSpending);
             this.panel7.Controls.Add(this.label7);
             this.panel7.Controls.Add(this.pictureBox6);
             this.panel7.Location = new System.Drawing.Point(680, 95);
@@ -238,16 +245,16 @@
             this.panel7.Size = new System.Drawing.Size(252, 133);
             this.panel7.TabIndex = 3;
             // 
-            // label6
+            // lbSpending
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Vinhan", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(122, 67);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 26);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "12";
+            this.lbSpending.AutoSize = true;
+            this.lbSpending.Font = new System.Drawing.Font("Vinhan", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSpending.ForeColor = System.Drawing.Color.White;
+            this.lbSpending.Location = new System.Drawing.Point(102, 67);
+            this.lbSpending.Name = "lbSpending";
+            this.lbSpending.Size = new System.Drawing.Size(24, 20);
+            this.lbSpending.TabIndex = 1;
+            this.lbSpending.Text = "12";
             // 
             // label7
             // 
@@ -270,10 +277,61 @@
             this.pictureBox6.TabIndex = 0;
             this.pictureBox6.TabStop = false;
             // 
+            // dtDoanhThu
+            // 
+            this.dtDoanhThu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtDoanhThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtDoanhThu.Location = new System.Drawing.Point(62, 265);
+            this.dtDoanhThu.Name = "dtDoanhThu";
+            this.dtDoanhThu.Size = new System.Drawing.Size(563, 368);
+            this.dtDoanhThu.TabIndex = 4;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.btnExport);
+            this.panel8.Controls.Add(this.lbDoanhThu);
+            this.panel8.Controls.Add(this.label3);
+            this.panel8.Location = new System.Drawing.Point(631, 265);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(305, 368);
+            this.panel8.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(18, 35);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 25);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Doanh Thu :";
+            // 
+            // lbDoanhThu
+            // 
+            this.lbDoanhThu.AutoSize = true;
+            this.lbDoanhThu.Font = new System.Drawing.Font("Vinhan", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDoanhThu.Location = new System.Drawing.Point(64, 83);
+            this.lbDoanhThu.Name = "lbDoanhThu";
+            this.lbDoanhThu.Size = new System.Drawing.Size(107, 26);
+            this.lbDoanhThu.TabIndex = 1;
+            this.lbDoanhThu.Text = "100000000";
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(205, 342);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(97, 23);
+            this.btnExport.TabIndex = 2;
+            this.btnExport.Text = "Xuất file excel";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // GUIDoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel8);
+            this.Controls.Add(this.dtDoanhThu);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -284,6 +342,7 @@
             this.Controls.Add(this.label1);
             this.Name = "GUIDoanhThu";
             this.Size = new System.Drawing.Size(996, 653);
+            this.Load += new System.EventHandler(this.GUIDoanhThu_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -299,6 +358,9 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtDoanhThu)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,18 +375,23 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbClient;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbIncome;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbSpending;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.DataGridView dtDoanhThu;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label lbDoanhThu;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnExport;
     }
 }

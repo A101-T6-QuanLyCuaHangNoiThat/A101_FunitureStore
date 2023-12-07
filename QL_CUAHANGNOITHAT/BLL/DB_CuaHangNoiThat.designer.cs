@@ -447,6 +447,8 @@ namespace BLL
 		
 		private string _HinhAnh;
 		
+		private decimal _DonGia;
+		
 		private EntitySet<CTHoaDon> _CTHoaDons;
 		
 		private EntitySet<CTPhieuNhap> _CTPhieuNhaps;
@@ -489,6 +491,8 @@ namespace BLL
     partial void OnSoLuongTonChanged();
     partial void OnHinhAnhChanging(string value);
     partial void OnHinhAnhChanged();
+    partial void OnDonGiaChanging(decimal value);
+    partial void OnDonGiaChanged();
     #endregion
 		
 		public SanPham()
@@ -804,6 +808,26 @@ namespace BLL
 					this._HinhAnh = value;
 					this.SendPropertyChanged("HinhAnh");
 					this.OnHinhAnhChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DonGia", DbType="Decimal(18,0) NOT NULL")]
+		public decimal DonGia
+		{
+			get
+			{
+				return this._DonGia;
+			}
+			set
+			{
+				if ((this._DonGia != value))
+				{
+					this.OnDonGiaChanging(value);
+					this.SendPropertyChanging();
+					this._DonGia = value;
+					this.SendPropertyChanged("DonGia");
+					this.OnDonGiaChanged();
 				}
 			}
 		}
@@ -1321,7 +1345,7 @@ namespace BLL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="Decimal(18,2)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TongTien", DbType="Decimal(18,0)")]
 		public System.Nullable<decimal> TongTien
 		{
 			get

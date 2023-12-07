@@ -18,6 +18,10 @@ namespace BLL
             {
                 if (db.NhanViens.Where(r => r.MaNV == Username && r.MatKhau == Userpass).FirstOrDefault() != null)
                 {
+                    if (db.NhanViens.Where(r => r.MaNV == Username && r.MatKhau == Userpass).Select(r => r.MaNhom).FirstOrDefault() == "Gue")
+                    {
+                        return false;
+                    }
                     nv = db.NhanViens.Where(r => r.MaNV == Username && r.MatKhau == Userpass).FirstOrDefault();
                     return true;
                 }

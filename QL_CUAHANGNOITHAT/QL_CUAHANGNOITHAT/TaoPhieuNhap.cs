@@ -60,7 +60,8 @@ namespace QL_CUAHANGNOITHAT
         }
 
         List<cart> list = new List<cart>();
-        public List<cart> push(string MaSP, string TenSP, int SoLuong)
+        
+        public List<cart> push(string MaSP, string TenSP, int SoLuong,int DonGia)
         {
             if (list.Count() == 0)
             {
@@ -68,6 +69,7 @@ namespace QL_CUAHANGNOITHAT
                 c.MaSP = MaSP;
                 c.TenSP = TenSP;
                 c.SoLuong = SoLuong;
+                c.DonGia = DonGia;
                 list.Add(c);
             }
             else
@@ -78,6 +80,7 @@ namespace QL_CUAHANGNOITHAT
                     c.MaSP = MaSP;
                     c.TenSP = TenSP;
                     c.SoLuong = SoLuong;
+                    c.DonGia = DonGia;
                     list.Add(c);
                 }
                 else
@@ -96,14 +99,17 @@ namespace QL_CUAHANGNOITHAT
                 SanPham item = sp.FindSanPham(txtMaSP.Text);
                 if (item != null)
                 {
-                    int soluongNhap = int.Parse(txtSoLuong.Text) - int.Parse(item.SoLuongTon.ToString());
-                    push(item.MaSP, item.TenSP, soluongNhap);
+                    //int soluongNhap = int.Parse(txtSoLuong.Text) - int.Parse(item.SoLuongTon.ToString());
+                    push(item.MaSP, item.TenSP, int.Parse(txtSLNhap.Text),int.Parse(item.DonGia.ToString()));
                 }
             }
+            double total = 0;
             foreach (var i in list)
-            {
+            {            
                 dtChiTietPhieuNhap.Rows.Add(i.TenSP, i.SoLuong);
+                total += (i.DonGia * i.SoLuong * 1.0);
             }
+            txtTongTien.Text = total.ToString();
         }
 
         private void btnCreate_Click_1(object sender, EventArgs e)
@@ -116,7 +122,7 @@ namespace QL_CUAHANGNOITHAT
                 insertPhieuNhap.MaPN = txtMaPN.Text;
                 insertPhieuNhap.NgayLap = DateTime.Parse(txtNgayLap.Text);
                 insertPhieuNhap.MaNV = UserAccout.MaNV;
-                insertPhieuNhap.TongTien = 1000000;
+                insertPhieuNhap.TongTien = int.Parse(txtTongTien.Text);
                 pn.insertPhieuNhap(insertPhieuNhap);
                 foreach (var i in list)
                 {
@@ -139,5 +145,6 @@ namespace QL_CUAHANGNOITHAT
         public string MaSP { get; set; }
         public string TenSP { get; set; }
         public int SoLuong { get; set; }
+        public int DonGia { get; set; }
     }
 }

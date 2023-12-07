@@ -13,8 +13,10 @@ namespace QL_CUAHANGNOITHAT
     public partial class GUIKhachHang : UserControl
     {
         BLL_KhachHang kh = new BLL_KhachHang();
-        public GUIKhachHang()
+        NhanVien UserAccout { get; set; }
+        public GUIKhachHang(NhanVien UserAccout)
         {
+            this.UserAccout = UserAccout;
             InitializeComponent();
         }
 
@@ -28,6 +30,10 @@ namespace QL_CUAHANGNOITHAT
 
         private void GUIKhachHang_Load(object sender, EventArgs e)
         {
+            if (UserAccout.MaNhom == "User")
+            {
+                btnDel.Visible = false;
+            }
             dataGridView1.DataSource = kh.GetKhachHang();
         }
 

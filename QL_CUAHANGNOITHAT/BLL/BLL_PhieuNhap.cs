@@ -26,7 +26,7 @@ namespace BLL
         }
         public object GetCTPhieuNhap(string values)
         {
-            return db.CTPhieuNhaps.Where(r=>r.MaPN == values).Select(r => new {r.SanPham.TenSP,r.SoLuong});
+            return db.CTPhieuNhaps.Where(r=>r.MaPN == values).Select(r => new {r.SanPham.TenSP,r.SoLuong,r.SanPham.DonGia});
         }
         public bool deletePhieuNhap(string values)
         {

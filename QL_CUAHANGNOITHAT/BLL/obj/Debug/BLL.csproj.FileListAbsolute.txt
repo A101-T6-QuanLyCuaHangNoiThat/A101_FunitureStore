@@ -8,5 +8,3 @@ D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\BLL\bin\Debug\BLL.dll
 D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\BLL\bin\Debug\BLL.pdb
 D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\BLL\obj\Debug\BLL.dll
 D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\BLL\obj\Debug\BLL.pdb
-D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
-D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache

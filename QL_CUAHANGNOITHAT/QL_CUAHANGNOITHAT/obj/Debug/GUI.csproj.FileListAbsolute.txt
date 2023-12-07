@@ -36,12 +36,8 @@ D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\obj\Debug\QL_CUA
 D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\obj\Debug\QL_CUAHANGNOITHAT.ThemSanPham.resources
 D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\obj\Debug\GUI.csproj.GenerateResource.Cache
 D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\obj\Debug\QL_CUAHANGNOITHAT.ThemNhanVien.resources
-D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\bin\Debug\BLL.dll.config
-D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\obj\Debug\GUI.csproj.AssemblyReference.cache
-D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\obj\Debug\GUI.csproj.SuggestedBindingRedirects.cache
-D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\obj\Debug\GUI.csproj.CoreCompileInputs.cache
-D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\obj\Debug\GUI.csproj.CopyComplete
 D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\obj\Debug\QL_CUAHANGNOITHAT.PNHoaDon.resources
 D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\obj\Debug\QL_CUAHANGNOITHAT.PNPhieuNhap.resources
 D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\obj\Debug\QL_CUAHANGNOITHAT.ChiTietHoaDon.resources
 D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\obj\Debug\QL_CUAHANGNOITHAT.TaoPhieuNhap.resources
+D:\WF C#\A101_FunitureStore\QL_CUAHANGNOITHAT\QL_CUAHANGNOITHAT\obj\Debug\GUI.csprojResolveAssemblyReference.cache
