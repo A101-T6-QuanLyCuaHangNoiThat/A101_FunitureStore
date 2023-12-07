@@ -28,5 +28,11 @@ namespace QL_CUAHANGNOITHAT
             dtCHHD.DataSource = CTHD;
             lbTongtien.Text=HD.TongTien.ToString();
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Print fr = new Print(HD);
+            fr.ShowDialog();
+        }
     }
 }

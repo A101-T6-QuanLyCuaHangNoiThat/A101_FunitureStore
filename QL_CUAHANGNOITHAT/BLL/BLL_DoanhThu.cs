@@ -11,11 +11,25 @@ namespace BLL
         DB_CuaHangNoiThatDataContext db = new DB_CuaHangNoiThatDataContext();
         public double TongThuNhap()
         {
-            return double.Parse(db.HoaDons.Select(r => r.TongTien).Sum().ToString());
+            try
+            {
+                return double.Parse(db.HoaDons.Select(r => r.TongTien).Sum().ToString());
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
         public double TotalSpending()
         {
-            return double.Parse(db.PhieuNhaps.Select(r => r.TongTien).Sum().ToString());
+            try
+            {
+                return double.Parse(db.PhieuNhaps.Select(r => r.TongTien).Sum().ToString());
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
         public int CountClient()
         {
@@ -23,7 +37,7 @@ namespace BLL
         }
         public object getHoaDon()
         {
-            return db.HoaDons.Select(r => new { r.KhachHang.HoTen,r.KhachHang.DienThoai, r.NgayLap, r.TongTien });
+            return db.HoaDons.Select(r => new { r.KhachHang.HoTen, r.KhachHang.DienThoai, r.NgayLap, r.TongTien });
         }
     }
 }

@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
+    public class ReportCTHoaDon
+    {
+        public string TenSP { get; set; }
+        public int SoLuong { get; set; }
+        public int DonGia { get; set; }
+    }
     public class BLLHoaDon
     {
         DB_CuaHangNoiThatDataContext db = new DB_CuaHangNoiThatDataContext();
@@ -48,6 +54,28 @@ namespace BLL
             try
             {
                 return db.CTHoaDons.Where(r=>r.MaHD == values).Select(r => new { r.SanPham.TenSP,r.SoLuong,r.SanPham.DonGia});
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        public List<ReportCTHoaDon> GetCTHoaDonRP(string values)
+        {
+            try
+            {
+                List<ReportCTHoaDon> result = new List<ReportCTHoaDon>();
+                List<CTHoaDon> temp = db.CTHoaDons.Where(r => r.MaHD == values).Select(r => r).ToList();
+                foreach (var i in temp)
+                {
+                    ReportCTHoaDon item = new ReportCTHoaDon();
+                    item.TenSP = i.SanPham.TenSP;
+                    item.SoLuong = int.Parse(i.SoLuong.ToString());
+                    item.DonGia = int.Parse(i.SanPham.DonGia.ToString());
+
+                    result.Add(item);
+                }
+                return result;
             }
             catch (Exception)
             {
@@ -107,23 +135,71 @@ namespace BLL
                 return false;
             }
         }
-        public bool insertHoaDon(HoaDon item)
+        public bool insertKhachHangTemp(KhachHang kh)
         {
             try
             {
-                if (checkID(item.MaHD) == true)
-                {
-                    db.HoaDons.InsertOnSubmit(item);
-                    db.SubmitChanges();
-                    return true;
-                }
+                db.KhachHangs.InsertOnSubmit(kh);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
                 return false;
+            }
+        }
+        public bool checkIDKLH(string id)
+        {
+            try
+            {
+                if (db.KhachHangs.Where(r => r.MaKH == id) != null)
+                {
+                    return false;
+                }
+                return true;
             }
             catch (Exception)
             {
 
                 return false;
             }
+        }
+        public bool insertHoaDon(HoaDon item)
+        {
+            try
+            {
+                db.HoaDons.InsertOnSubmit(item);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool insertCTHoaDon(CTHoaDon hd)
+        {
+            try
+            {
+                db.CTHoaDons.InsertOnSubmit(hd);
+                db.SubmitChanges();
+                SanPham sp = db.SanPhams.Where(r => r.MaSP == hd.MaSP).FirstOrDefault();
+                if (sp != null)
+                {
+                    sp.SoLuongTon -= hd.SoLuong;
+                    db.SubmitChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+        public int CountCTHD()
+        {
+            return db.CTHoaDons.Count();
         }
     }
 }

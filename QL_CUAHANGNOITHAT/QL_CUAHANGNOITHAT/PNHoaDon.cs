@@ -115,5 +115,11 @@ namespace QL_CUAHANGNOITHAT
                 return;
             }
         }
+
+        private void btnCreateHoaDon_Click(object sender, EventArgs e)
+        {
+            TaoHoaDon fr = new TaoHoaDon(UserAccout);
+            fr.Show();
+        }
     }
 }

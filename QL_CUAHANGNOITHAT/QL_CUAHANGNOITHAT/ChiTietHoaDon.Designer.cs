@@ -39,6 +39,7 @@
             this.lbNgaylap = new System.Windows.Forms.Label();
             this.lbTenKH = new System.Windows.Forms.Label();
             this.lbTongtien = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtCHHD)).BeginInit();
             this.SuspendLayout();
             // 
@@ -152,11 +153,22 @@
             this.lbTongtien.TabIndex = 0;
             this.lbTongtien.Text = "1000000 VND";
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(397, 602);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(85, 23);
+            this.btnPrint.TabIndex = 2;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // ChiTietHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 627);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.dtCHHD);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
@@ -190,5 +202,6 @@
         private System.Windows.Forms.Label lbNgaylap;
         private System.Windows.Forms.Label lbTenKH;
         private System.Windows.Forms.Label lbTongtien;
+        private System.Windows.Forms.Button btnPrint;
     }
 }
